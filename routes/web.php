@@ -21,10 +21,14 @@ Route::get('cursos', function () {
     return "welcomeewerwe";
 });
 
-Route::get('cursos/{curso}', function ($curso) {
-    return "bienvenido al curso: $curso";
-});
-
 Route::get('users/create', function () {
     return "Creacion de cursos";
+});
+
+Route::get('cursos/{curso}/{categoria?}', function ($curso, $categoria = null) {
+    if ($categoria) {
+        return "Bienvenido al curso: $curso, de la categoría $categoria";
+    } else {
+        return "Bienvenido al curso: $curso";
+    }
 });
