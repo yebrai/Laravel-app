@@ -14,5 +14,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return "test";
+});
+
+Route::get('cursos', function () {
+    return "welcomeewerwe";
+});
+
+Route::get('cursos/{curso}', function ($curso) {
+    return "bienvenido al curso: $curso";
+});
+
+Route::get('users/create', function () {
+    return "Creacion de cursos";
 });
