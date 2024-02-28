@@ -18,9 +18,21 @@ use App\Http\Controllers\CursoController;
 Route::get('/', HomeController::class);
 
 Route::controller(CursoController::class)->group(function () {
-    Route::get('cursos', 'index');
-    Route::get('cursos/create', 'create');
-    Route::get('cursos/{cursos}', 'show');
+
+    Route::get('cursos', [CursoController::class, 'index'])->name('cursos.index');
+
+    Route::get('cursos/create', [CursoController::class, 'create'])->name('cursos.create');
+
+    Route::post('cursos', [CursoController::class, 'store'])->name('cursos.store');
+
+    //normal
+    Route::get('cursos/{id}', [CursoController::class, 'show'])->name('cursos.show');
+
+    //usando instancia Curso en controller.
+    Route::get('cursos/{curso}/edit', [CursoController::class, 'edit'])->name('cursos.edit');
+
+    Route::put('cursos/{curso}', [CursoController::class, 'update'] )->name('cursos.update');
+
 });
 
 // Route::get('cursos/{curso}/{categoria?}', function ($curso, $categoria = null) {
