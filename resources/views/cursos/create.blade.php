@@ -3,32 +3,51 @@
 @section('title', 'Cursos create')
 
 @section('content')
-<h1>En esta pagina podras crear un curso</h1>
-<form action="{{route('cursos.store')}}" method="POST">
+    <h1>En esta pagina podras crear un curso</h1>
+    <form action="{{ route('cursos.store') }}" method="POST">
 
-    @csrf
+        @csrf
 
-    <label>
-        Nombre:
+        <label>
+            Nombre:
+            <br>
+            <input type="text" name="name" value="{{old('name', $curso->name)}}">
+        </label>
+
+        @error('name')
+            <br>
+            <span>{{ $message }}</span>
+            <br>
+        @enderror
+
         <br>
-        <input type="text" name="name">
-    </label>
+        <label>
+            Description:
+            <br>
+            <textarea name="description" rows="10" >{{old('description'. $curso->description)}}</textarea>
+        </label>
 
-    <br>
-    <label>
-        Description:
+        @error('description')
+            <br>
+            <span>{{ $message }}</span>
+            <br>
+        @enderror
+
         <br>
-        <textarea name="description"  rows="10"></textarea>
-    </label>
+        <label>
+            Nombre:
+            <br>
+            <input type="text" name="category" value="{{old('category', $curso->category)}}">
+        </label>
 
-    <br>
-    <label>
-        Nombre:
+        @error('category')
+            <br>
+            <span>{{ $message }}</span>
+            <br>
+        @enderror
+
         <br>
-        <input type="text" name="category">
-    </label>
-    <br>
-    <button type="submit">Enviar Formulario</button>
+        <button type="submit">Enviar Formulario</button>
 
-</form>
+    </form>
 @endsection

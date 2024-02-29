@@ -24,6 +24,12 @@ class CursoController extends Controller
     {
         $curso = new Curso();
 
+        $request->validate([
+            'name' => 'required|min:3',
+            'description' => 'required',
+            'category' => 'required'
+        ]);
+
         $curso->name = $request->name;
         $curso->description = $request->description;
         $curso->category = $request->category;
